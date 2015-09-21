@@ -1,11 +1,11 @@
-  //declare bacteria variables here 
+ //declare bacteria variables here 
  Bacteria [] quartente ;
  
  void setup()   
  {     
  	//initialize bacteria variables here   
  	size(400,400);
- 	quartente = new Bacteria[40];
+ 	quartente = new Bacteria[50];
  	for(int i = 0; i<quartente.length; i++ ) 
  	{
  		quartente[i] = new Bacteria();
@@ -21,7 +21,7 @@
 	{
 		quartente[i].move(); 
  		quartente[i].show();
- 		//quartente[i].follow();
+ 		
 	} 	
 	if (mousePressed) {
 		Food it = new Food();
@@ -43,10 +43,13 @@
  	{
  		theX = 200;
  		theY = 200;
- 		theClr = ((int)(Math.random()*255),175,(int)(Math.random()*255))
+ 		theClr = ((int)(Math.random()*255),175,(int)(Math.random()*255));
+ 		
  	} 
+
  	void move() 
  	{
+
  		if(mousePressed) 
  		{
  			if(mouseX < theX) 
@@ -66,19 +69,25 @@
  		}
  		theX = theX + ((int)(Math.random()*3)-1);
  		theY = theY + ((int)(Math.random()*3)-1);
-
+ 		if(theX == mouseX && theY == mouseY) {
+ 			theClr = (0,0,255);
+ 		}
+ 		else {
+ 			theClr = ((int)(Math.random()*255),175,(int)(Math.random()*255));
+ 		}
  		
  	}
  	void show() 
  	{
  		noStroke();
+ 		
  		fill(theClr);
  		ellipse(theX,theY,20,20);
- 	}
- 	/*void follow() 
- 	{
  		
- 	}*/
+ 	}
+ 	
+ 		
+ 	
  	
 
  }    
